@@ -21,20 +21,20 @@ l_table = {
 }
 
 l_textEditor = {
-	"insLink":"Insert link",
-	"emptyFriends":"Add friends to link their profiles!",
+	"insLink":"Vložit odkaz",
+	"emptyFriends":"Přidejte přátele pro možnost vložení odkazu!",
 }
 
 l_profile = {
 	"upload":"Nahrát obrázek",
 	"name":"Jméno: ",
-	"howMet":"How have you met?",
-	"whenMet":"When have you met? ",
+	"howMet":"Jak jste se seznámily?",
+	"whenMet":"Kdy jste se seznámily? ",
 	"bday":"Narozeniny: ",
 	"zodiac":"Znamení: ",
 	"gender":"Pohlaví: ",
-	"about":"About",
-	"saveMsg":"Changes saved successfuly"
+	"about":"Popis",
+	"saveMsg":"Změny byli úspěšně uloženy"
 }
 
 l_profileDel = {
