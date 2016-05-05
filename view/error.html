@@ -1,0 +1,21 @@
+<section>
+	<!--  Different error messages depending on received error number -->
+	<h2>{{lan.get("title","???")}}</h2>
+	%if error == 102:
+	<p>
+		{{lan.get("102a","???")}}<br>
+		{{lan.get("102b","???")}}
+	</p>	
+	<p>
+		<a href="/profile/create" alt="Add" title="Add"><img src="{{ url('static', filename='img/create.svg') }}" class="icon"></a>
+	</p>
+	%elif error == 101:
+	<p>
+		{{lan.get("101a","???")}}<br>
+		{{lan.get("101b","???")}}
+	</p>	
+	<p>
+		<a href="/diary/create" alt="Add" title="Add"><img src="{{ url('static', filename='img/create.svg') }}" class="icon"></a>
+	</p>
+	%end
+</section>

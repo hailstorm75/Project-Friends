@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="{{ url('static', filename='css/table.css') }}">
+<script src="static/js/sorttable.js"></script>
+<script>sorttable.sort_alpha = function(a,b) { return a[0].localeCompare(b[0], 'cs'); }</script>
+<section>
+<p>
+<a href="/profile/create" alt="Add" title="Add"><img src="{{ url('static', filename='img/create.svg') }}" class="icon"></a>
+<table class="sortable unselectable">
+	<thead>
+		<tr>
+			<th></th>
+			<th>{{lan.get("name","???")}}</th>
+			<th>{{lan.get("howMet","???")}}</th>
+			<th>{{lan.get("whenMet","???")}}</th>
+			<th>{{lan.get("bday","???")}}</th>
+			<th>{{lan.get("zodiac","???")}}</th>
+			<th>{{lan.get("gender","???")}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		%for key, value in items.items():
+			<tr>
+				<td><a href="profile/{{key}}/edit"><img src="{{ url('static', filename='img/edit.svg') }}" class="icon"></a></td>
+				<td><a href="profile/{{key}}">{{value[0]}}</a></td>
+				<td>{{(met.get(value[1], "Not found"))[0]}}</td>
+				<td>{{value[2]}}</td>
+				<td>{{value[3]}}</td>
+				<td>{{value[4]}}</td>
+				<td>{{value[5]}}</td>	
+			</tr>
+		%end
+	</tbody>
+</table>
+</p>
+</section>

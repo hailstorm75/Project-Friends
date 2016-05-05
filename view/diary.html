@@ -1,0 +1,12 @@
+<section>
+	<p>
+		<a href="/diary/create" alt="Add" title="Add"><img src="{{ url('static', filename='img/create.svg') }}" class="icon"></a>
+	</p>
+	%for article in articles[::-1]:
+	<h2><a href="/diary/{{article[0]}}">{{article[1]}}</a></h2>
+	<p>
+	% desc = tagToLink((article[2])[:100], names) + "..."
+		{{!desc}}
+	</p>
+	%end
+</section>

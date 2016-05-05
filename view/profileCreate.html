@@ -1,0 +1,56 @@
+<script type="text/javascript">
+	function addNewInput(val) {
+		document.getElementById('addNew').disabled = val !== 'other';
+	}
+</script>
+<form method="POST" accept="/profile/create" enctype="multipart/form-data">
+	<section>
+		<p>
+			<div style="display: inline-block; float: right;">
+				<a onclick="sub.click()" style="cursor:pointer"><img src="{{ url('static', filename='img/confirm.svg') }}" class="icon-medium"></a>
+				<input id="sub" type="submit" value="Submit" style="position:absolute;visibility:hidden;">
+			</div>
+			<div style="display: flex; align-items: center;">
+				<input id="selectedFile" type="file" name="upload" onpropertychange="add()" style="position:absolute;visibility:hidden;" accept="image/jpg, image/JPG,image/JPEG, image/jpeg">
+				<div id="profile" onclick="selectedFile.click()">
+					<div id="profilePic" style="background-image: url({{ url('static', filename='img/noProfile.svg') }})"></div>
+	 				<p class="unselectable">Upload image</p>
+				</div>
+
+				<div id="profileDesc">
+					<ul style="padding: 0;">
+						<li>
+							{{lan.get("name","???")}}<input type="text" name="name" required>
+						</li>
+						<li>
+							{{lan.get("gender","???")}}<input type="radio" name="gender" value="M">M <input type="radio" name="gender" value="F">F
+						</li>
+						<li>
+							{{lan.get("bday","???")}}<input type="text" name="bday">
+						</li>
+						<li>
+							{{lan.get("howMet","???")}}
+							<select name="met_how" onchange="addNewInput(this.value)">
+								<option value="select">Select</option>
+								%for key, value in metHow.items():
+									<option value="{{key}}">{{value[0]}}</option>
+								%end
+								<option value="other" id="other">Other</option>
+							</select>
+							<input type="text" name="addNew" id="addNew" disabled="true" />
+						</li>
+						<li>
+							{{lan.get("whenMet","???")}} <input type="text" name="met_when">
+						</li>
+					</ul>
+				</div>
+			</div>
+		</p>
+	</section>
+	<section>
+		<h2>{{lan.get("about","???")}}</h2>
+		<p>
+			<textarea style="width: 100%; height: 200px" name="desc"></textarea>
+		</p>
+	</section>
+</form>

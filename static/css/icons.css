@@ -1,0 +1,17 @@
+.icon {
+	width: 100%
+	height: auto;
+	max-width: 25px;
+	border-radius: 100%;
+}
+.icon-medium {
+	width: 100%
+	height: auto;
+	max-width: 35px;
+	border-radius: 100%;
+}
+.icon:hover, .icon-medium:hover {
+	-webkit-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{title}}</title>
+		<!-- Imports -->
+		<link rel="stylesheet" type="text/css" href="{{ url('static', filename='css/stylesheet.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url('static', filename='css/icons.css') }}">
+		<link rel="icon" type="img/ico" href="{{ url('static', filename='/favicon.ico') }}">
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1 class="unselectable defaultcursor"><img src="{{ url('static', filename='img/icon.svg') }}" style="max-height: 28px; width: auto;">{{title}}</h1>
+			</header>
+			<nav id="nav" class="">
+				<a href="/">{{lan.get("home","???")}}</a>
+				<a href="/diary">{{lan.get("myDiary","???")}}</a>
+				<!-- <a href="/settings">Settings</a> -->
+			</nav>
+			<!-- Sticky navbar -->
+			<script type="text/javascript">
+				var scrollpos = function(){return window.scrollY};
+				var nav = document.getElementById("nav");
+				function add_class_on_scroll() {
+					nav.classList.add("sticky");
+				}
+				function remove_class_on_scroll() {
+					nav.classList.remove("sticky");
+				}
+				window.addEventListener('scroll', function(){ 
+					scrollpos = window.scrollY;
+
+					if(scrollpos > 230){
+						add_class_on_scroll();
+					}
+					else {
+						remove_class_on_scroll();
+					}
+				});
+			</script>

@@ -1,0 +1,17 @@
+<section>
+	<p>
+		<div style="display: inline-block; float: right;">
+			<a href="/diary/{{id}}/edit"><img src="{{ url('static', filename='img/edit.svg') }}" class="icon-medium"></a>
+		</div>
+		<div style="display: inline-block;">
+			<h2>{{title}}</h2>
+		</div>
+	</p>
+	<p>
+		% d = text.split("\n")
+		%for t in d:
+		{{!t}}</br>
+		%end
+	</p>
+	<div id="article-date">{{date}}</div>
+</section>

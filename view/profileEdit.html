@@ -1,0 +1,58 @@
+<script type="text/javascript">
+	function addNewInput(val) {
+		document.getElementById('addNew').disabled = val !== 'other';
+	}
+</script>
+<form method="POST" accept="/profile/<id>/edit" enctype="multipart/form-data">
+	<section>
+		<p>
+			<div style="display: inline-block; float: right;">
+				<a href="/profile/{{id}}/delete"><img src="{{ url('static', filename='img/delete.svg') }}" class="icon-medium"></a>
+				<a onclick="sub.click()" style="cursor:pointer"><img src="{{ url('static', filename='img/confirm.svg') }}" class="icon-medium"></a>
+				<input id="sub" type="submit" value="Submit" style="position:absolute;visibility:hidden;">
+			</div>
+			<div style="display: flex; align-items: center;">
+				<input id="selectedFile" type="file" name="upload" onpropertychange="add()" style="position:absolute;visibility:hidden;" accept="image/jpg, image/JPG,image/JPEG, image/jpeg">
+				<div id="profile" onclick="selectedFile.click()">
+					<div id="profilePic" style="background-image: url({{ url('static', filename=path) }})" ></div>
+	 				<p class="unselectable">{{lan.get("upload","???")}}</p>
+				</div>
+				
+	 			<div id="profileDesc">	
+					<ul style="padding: 0;">
+						<li>{{lan.get("gender","???")}}
+							%if item[6] == "M":
+								<input type="radio" name="gender" value="M" checked="checked">M <input type="radio" name="gender" value="F">F
+							%else:
+								<input type="radio" name="gender" value="M">M <input type="radio" name="gender" value="F" checked="checked">F
+							%end
+						</li>
+						<li>{{lan.get("bday","???")}}<input type="text" value="{{item[4]}}" name="bday"></li>
+						<li>{{lan.get("howMet","???")}}
+							<select name="met_how"onchange="addNewInput(this.value)">
+								%for key, value in metHow.items():
+
+									%if value[0] != (metHow.get(item[2]))[0]:
+									<option value="{{key}}">{{value[0]}}</option>
+									%else:
+									<option value="{{key}}" selected>{{(metHow.get(item[2]))[0]}}</option>
+									%end
+								%end
+								<option value="other" id="other">Other</option>
+							</select>
+							<input type="text" name="addNew" id="addNew" disabled="true" />
+						</li>
+						<li>{{lan.get("whenMet","???")}}<input type="text" value="{{item[3]}}" name="met_when"></li>
+					</ul>
+				</div>
+			</div>
+			
+		</p>
+	</section>
+	<section>
+		<h2>About</h2>
+		<p>
+			<textarea style="width: 100%; height: 200px" name="desc">{{item[7]}}</textarea>
+		</p>
+	</section>
+</form>

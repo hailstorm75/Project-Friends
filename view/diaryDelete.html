@@ -1,0 +1,14 @@
+<section>
+	<h2>{{lan.get("title","???")}}</h2>
+	<p>
+		{{lan.get("msg1","???")}}{{title}}{{lan.get("msg2","???")}}
+	</p>
+	<p>
+		<a href="/diary/{{id}}/delete?confirm=True">
+			<img src="{{ url('static', filename='img/confirm.svg') }}" class="icon" alt="Confirm" title="Confirm">
+		</a>
+		<a href="/diary/{{id}}">
+			<img src="{{ url('static', filename='img/cancel.svg') }}" class="icon" alt="Cancel" title="Cancel">
+		</a>
+	</p>
+</section>

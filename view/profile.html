@@ -1,0 +1,51 @@
+<section>
+	%if msg == 'True':
+	<p>
+		<div style="border-radius: 10px; background-color: #5DDA63; padding: 5px; width: 100%; color: white;">
+			{{lan.get("saveMsg","???")}}
+		</div>
+	</p>
+	%end
+	<p>
+		<div style="display: inline-block; float: right;">
+			<a href="{{id}}/edit"><img src="{{ url('static', filename='img/edit.svg') }}" class="icon-medium"></a>
+		</div>
+		
+		<div style="display: flex; align-items: center;">
+			<div id="profilePic" style="background-image: 
+  				url({{ url('static', filename=path) }})">
+			</div>
+			<div id="profileDesc">
+				<ul style="padding: 0;">
+					<li>
+						%if item[6] == "M":
+							&#9794;
+						%else:
+							&#9792;
+						%end
+					</li>
+					<li>{{lan.get("bday","???")}}{{item[4]}}</li>
+					<li>{{lan.get("zodiac","???")}}{{item[5]}}</li>
+					%if how != "Friend":
+					<li>
+						You met at {{how}} in {{item[3]}}
+					</li>
+					%else:
+					<li>
+						You met through a friend in {{item[3]}}
+					</li>
+					%end
+				</ul>
+			</div>
+		</div>
+	</p>
+</section>
+<section>
+	<h2>{{lan.get("about","???")}}</h2>
+	<p>
+	% d = desc.split("\n")
+	%for t in d:
+	{{t}}</br>
+	%end
+	</p>
+</section>

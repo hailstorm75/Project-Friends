@@ -1,0 +1,64 @@
+<script type="text/javascript">
+function insertAtCursor(areaId,listId) {
+	var txtarea = document.getElementById(areaId);
+	var e = document.getElementById(listId);
+	var text = "{user=" + e.options[e.selectedIndex].value + "}"
+	var scrollPos = txtarea.scrollTop;
+	var strPos = 0;
+	var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ? 
+		"ff" : (document.selection ? "ie" : false ) );
+	if (br == "ie") { 
+		txtarea.focus();
+		var range = document.selection.createRange();
+		range.moveStart ('character', -txtarea.value.length);
+		strPos = range.text.length;
+	}
+	else if (br == "ff") strPos = txtarea.selectionStart;
+
+	var front = (txtarea.value).substring(0,strPos);  
+	var back = (txtarea.value).substring(strPos,txtarea.value.length); 
+	txtarea.value=front+text+back;
+	strPos = strPos + text.length;
+	if (br == "ie") { 
+		txtarea.focus();
+		var range = document.selection.createRange();
+		range.moveStart ('character', -txtarea.value.length);
+		range.moveStart ('character', strPos);
+		range.moveEnd ('character', 0);
+		range.select();
+	}
+	else if (br == "ff") {
+		txtarea.selectionStart = strPos;
+		txtarea.selectionEnd = strPos;
+		txtarea.focus();
+	}
+	txtarea.scrollTop = scrollPos;
+}
+</script>
+<form method="POST" accept="/profile/create" enctype="multipart/form-data">
+	<section>
+		<p>
+			<div style="display: inline-block; float: right;">
+				<a onclick="sub.click()" style="cursor:pointer"><img src="{{ url('static', filename='img/confirm.svg') }}" class="icon-medium"></a>
+				<input id="sub" type="submit" value="Submit" style="position:absolute;visibility:hidden;">
+			</div>
+			<div style="display: inline-block;">
+				{{lan.get("title","???")}}<input type="text" name="title" required>
+			</div>
+		</p>
+		%if len(people) != 0:
+		<a href="#" onclick="insertAtCursor('textarea','linkToPerson');return false;" class="button">{{textEditor.get("insLink","???")}}</a>
+		<select id="linkToPerson">
+			%for key, value in people.items():
+				<option value="{{key}}">{{value[0]}}</option>
+			%end
+		</select>
+		%else:
+		<a href="/profile/create">{{textEditor.get("emptyFriends","???")}}</a>
+		%end
+		<p>	
+			<textarea style="width: 100%; height: 200px" name="article" id="textarea"></textarea>
+				
+		</p>
+	</section>
+</form>
