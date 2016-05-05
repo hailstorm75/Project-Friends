@@ -13,7 +13,7 @@ If you don't have python installed you can still use the included EXE format whi
 
 ## Versions
 ### V1.0
-### V1.1
  - Fixed bug in diary: "Insert link" now displays a message when no links are available
  - Deleted richTextEditor
  - Hidden "Settings" menu
+ - Added language packs for multilingual support
