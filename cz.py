@@ -44,7 +44,8 @@ l_profileDel = {
 }
 
 l_diaryAC = {
-	"title":"Zahlaví "
+	"title":"Zahlaví ",
+	"saveMsg":"Změny byli úspěšně uloženy"
 }
 
 l_diaryDel = {

@@ -114,7 +114,7 @@ def index():
 @app.route('/profile/<id>')
 @app.route('/profile/<id>/')
 def profile(id):
-	# Gets URL variable save which is passed on line 107
+	# Gets URL variable save
 	save = request.query.get('save')
 	# Gets data for profile
 	c.execute('SELECT * FROM friends WHERE user_id =' + id )
@@ -245,11 +245,13 @@ def diary():
 @app.route('/diary/<id>')
 @app.route('/diary/<id>/')
 def articleDisplay(id):
+	# Gets URL variable save
+	save = request.query.get('save')
 	c.execute('SELECT title, article, date FROM diary WHERE article_id=' + id)
 	a = (c.fetchall())[0]
 	c.execute('SELECT user_id, name FROM friends')
 	b = dataToDict(c.fetchall())
-	return template('view/header.html', title=l_title.get("myDiary","???"), url=url, lan=l_header) + template('view/diaryDisplay.html', text=tagToLink(a[1], b), date=a[2], title=a[0], url=url, id=id) + template('view/footer.html', lan=l_footer)
+	return template('view/header.html', title=l_title.get("myDiary","???"), url=url, lan=l_header) + template('view/diaryDisplay.html', msg=save, text=tagToLink(a[1], b), date=a[2], title=a[0], url=url, id=id, lan=l_diaryAC) + template('view/footer.html', lan=l_footer)
 
 # Diary article edit
 @app.route('/diary/<id>/edit')
@@ -268,7 +270,7 @@ def articleSave(id):
 	article = request.forms.get('article').rstrip().lstrip()
 	c.execute('UPDATE diary SET title = ?, article = ? WHERE article_id = ?', (title, article, id))
 	conn.commit()
-	redirect('/diary/' + id)
+	redirect('/diary/' + id + '?save=True')
 
 # Diary delete article GET
 @app.route('/diary/<id>/delete')
@@ -302,8 +304,9 @@ def add():
 	redirect('/diary/' + str(c.lastrowid))
 
 # Settings GET
-# @app.route('/settings')
-# def settings(): return template('view/', url=url)
+@app.route('/settings')
+def settings(): 
+	return template('view/header.html', title="Settings", url=url, lan=l_header) + template('view/settings.html', url=url) + template('view/footer.html', lan=l_footer)
 
 # Routing for static files
 @app.route('/static/<filename:path>', name="static")

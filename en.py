@@ -44,7 +44,8 @@ l_profileDel = {
 }
 
 l_diaryAC = {
-	"title":"Title "
+	"title":"Title ",
+	"saveMsg":"Changes saved successfuly"
 }
 
 l_diaryDel = {

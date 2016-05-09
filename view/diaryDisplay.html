@@ -1,4 +1,11 @@
 <section>
+	%if msg == 'True':
+	<p>
+		<div style="border-radius: 10px; background-color: #5DDA63; padding: 5px; width: 100%; color: white;">
+			{{lan.get("saveMsg","???")}}
+		</div>
+	</p>
+	%end
 	<p>
 		<div style="display: inline-block; float: right;">
 			<a href="/diary/{{id}}/edit"><img src="{{ url('static', filename='img/edit.svg') }}" class="icon-medium"></a>
