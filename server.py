@@ -310,7 +310,7 @@ def add():
 # Settings GET
 @app.route('/settings')
 def settings(): 
-	return template('view/header.html', title="Settings", url=url, lan=l_header) + template('view/settings.html', url=url) + template('view/footer.html', lan=l_footer)
+	return template('view/header.html', title="Settings", url=url, lan=l_header) + template('view/settings.html', url=url, language=lan, lan=l_settings) + template('view/footer.html', lan=l_footer)
 
 # Routing for static files
 @app.route('/static/<filename:path>', name="static")

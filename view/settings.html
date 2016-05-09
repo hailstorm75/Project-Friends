@@ -1,17 +1,27 @@
 <form method="POST" accept="/settings/save" enctype="multipart/form-data">
 	<section>
-		<h2>General settings</h2>
+		<h2>{{lan.get("genSet","???")}}</h2>
 		<p>
 			<label>Language</label>
 			<select name="lan_select" onchange="addNewInput(this.value)">
-				<option value="en">English</option>
-				<option value="cz">Czech</option>
-				<option value="ru">Russian</option>
+			% if language == "en":
+				<option value="en" selected>{{lan.get("english","???")}}</option>
+				<option value="cz">{{lan.get("czech","???")}}</option>
+				<option value="ru">{{lan.get("russian","???")}}</option>
+			% elif language == "cz":
+				<option value="en">{{lan.get("english","???")}}</option>
+				<option value="cz" selected>{{lan.get("czech","???")}}</option>
+				<option value="ru">{{lan.get("russian","???")}}</option>
+			% else:
+				<option value="en">{{lan.get("english","???")}}</option>
+				<option value="cz">{{lan.get("czech","???")}}</option>
+				<option value="ru" selected>{{lan.get("russian","???")}}</option>
+			% end
 			</select>
 		</p>
 	</section>
 	<section>
-		<h2 style="color: red">Danger zone</h2>
+		<h2 style="color: red">{{lan.get("dangZone","???")}}</h2>
 		<p>
 			<a href="#" class="button">Delete all diary entries</a>
 			<a href="#" class="button">Delete all friends</a>

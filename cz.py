@@ -54,6 +54,14 @@ l_diaryDel = {
 	"msg2":" ?"
 }
 
+l_settings = {
+	"genSet":"Základní nastavení",
+	"dangZone":"Nebezpečná zona",
+	"english":"Angličtina",
+	"czech":"Čeština",
+	"russian":"Ruština"
+}
+
 l_footer = {
 	"msg":"Footer"
 }
