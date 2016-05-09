@@ -1,8 +1,12 @@
 import os
 import time
 import sqlite3
+import configparser
 from bottle import app, error, get, post, route, redirect, request, run, static_file, template, url
-lan = "cz"
+
+config = configparser.ConfigParser()
+config.read('conf.ini')
+lan = config['GENERAL']['language']
 if lan == "en":
 	from en import *
 elif lan == "cz":
