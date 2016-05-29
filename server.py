@@ -312,6 +312,11 @@ def add():
 def settings(): 
 	return template('view/header.html', title="Settings", url=url, lan=l_header) + template('view/settings.html', url=url, language=lan, lan=l_settings) + template('view/footer.html', lan=l_footer)
 
+# Settings POST
+@app.post('/settings')
+def settingsSave():
+	redirect('/settings')
+
 # Routing for static files
 @app.route('/static/<filename:path>', name="static")
 def static(filename): return static_file(filename, root='static/') 

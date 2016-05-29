@@ -59,7 +59,10 @@ l_settings = {
 	"dangZone":"Danger zone",
 	"english":"English",
 	"czech":"Czech",
-	"russian":"Russian"
+	"russian":"Russian",
+	"dde":"Delete all diary entries",
+	"df":"Delete all friends",
+	"de":"Delete everything"
 }
 
 l_footer = {

@@ -59,7 +59,10 @@ l_settings = {
 	"dangZone":"Nebezpečná zona",
 	"english":"Angličtina",
 	"czech":"Čeština",
-	"russian":"Ruština"
+	"russian":"Ruština",
+	"dde":"Smazat všechno z diáře",
+	"df":"Smazat všechny kamarady",
+	"de":"Smazat všechno"
 }
 
 l_footer = {
